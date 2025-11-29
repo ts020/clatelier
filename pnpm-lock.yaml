@@ -86,12 +86,6 @@ importers:
 
   apps/cli:
     dependencies:
-      '@clatelier/server':
-        specifier: workspace:*
-        version: link:../../packages/server
-      '@clatelier/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
       '@hono/node-server':
         specifier: 'catalog:'
         version: 1.19.6(hono@4.10.7)
