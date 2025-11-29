@@ -1,4 +1,6 @@
+import { exec } from "node:child_process";
 import { existsSync, readFileSync } from "node:fs";
+import { platform } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { serve } from "@hono/node-server";
@@ -9,9 +11,20 @@ import serverApp from "../../../packages/server/src/index";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+function openBrowser(url: string) {
+	const cmd =
+		platform() === "darwin"
+			? "open"
+			: platform() === "win32"
+				? "start"
+				: "xdg-open";
+	exec(`${cmd} ${url}`);
+}
+
 async function main() {
 	const port = Number(process.env.PORT) || 3000;
 	const host = process.env.HOST || "localhost";
+	const noBrowser = process.argv.includes("--no-browser");
 
 	// Resolve the public directory (built web assets)
 	const publicDir = resolve(__dirname, "../public");
@@ -52,10 +65,13 @@ async function main() {
 			hostname: host,
 		},
 		(info) => {
-			console.log(
-				`\nClatelier is running at http://${info.address}:${info.port}`,
-			);
+			const url = `http://${info.address}:${info.port}`;
+			console.log(`\nClatelier is running at ${url}`);
 			console.log("Press Ctrl+C to stop\n");
+
+			if (!noBrowser) {
+				openBrowser(url);
+			}
 		},
 	);
 }
