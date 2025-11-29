@@ -16,7 +16,8 @@
 	},
 	"dependencies": {
 		"hono": "catalog:",
-		"@hono/node-server": "catalog:"
+		"@hono/node-server": "catalog:",
+		"@clatelier/server": "workspace:*"
 	},
 	"devDependencies": {
 		"@types/node": "catalog:",
