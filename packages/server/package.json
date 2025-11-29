@@ -1,0 +1,33 @@
+{
+	"name": "@clatelier/server",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"typecheck": "tsgo --noEmit",
+		"test": "vitest run",
+		"clean": "rm -rf dist"
+	},
+	"dependencies": {
+		"hono": "catalog:",
+		"@clatelier/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"typescript": "catalog:",
+		"@types/node": "catalog:",
+		"@typescript/native-preview": "catalog:",
+		"tsup": "catalog:",
+		"vitest": "catalog:"
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"name": "clatelier",
+	"version": "0.1.0",
+	"description": "Visual editor for Claude Code skills, agents, and slash commands",
+	"type": "module",
+	"bin": {
+		"clatelier": "./dist/cli.js"
+	},
+	"files": ["dist", "public"],
+	"scripts": {
+		"prebuild": "pnpm --filter @clatelier/web build && rm -rf public && cp -r ../web/dist public",
+		"build": "tsup",
+		"dev": "tsup --watch",
+		"typecheck": "tsgo --noEmit",
+		"clean": "rm -rf dist public"
+	},
+	"dependencies": {
+		"hono": "catalog:",
+		"@hono/node-server": "catalog:"
+	},
+	"devDependencies": {
+		"@types/node": "catalog:",
+		"@typescript/native-preview": "catalog:",
+		"tsup": "catalog:"
+	},
+	"engines": {
+		"node": ">=20.0.0"
+	}
+}

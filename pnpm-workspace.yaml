@@ -1,0 +1,41 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+catalog:
+  # React
+  react: ^19.0.0
+  react-dom: ^19.0.0
+  '@types/react': ^19.0.2
+  '@types/react-dom': ^19.0.2
+
+  # Hono
+  hono: ^4.10.7
+  '@hono/node-server': ^1.14.3
+
+  # React Flow
+  reactflow: ^11.11.4
+
+  # Build
+  vite: ^7.2.4
+  '@vitejs/plugin-react': ^5.1.1
+  tailwindcss: ^4.1.17
+  '@tailwindcss/vite': ^4.1.17
+  '@hono/vite-dev-server': ^0.23.0
+  tsup: ^8.3.5
+
+  # TypeScript
+  typescript: ^5.7.2
+  '@typescript/native-preview': ^7.0.0-dev.20251129.1
+  '@types/node': ^24.10.1
+
+  # Lint/Format
+  '@biomejs/biome': ^1.9.4
+
+  # Test
+  vitest: ^4.0.14
+  '@vitest/ui': ^4.0.14
+  '@playwright/test': ^1.57.0
+
+  # Git hooks
+  lefthook: ^2.0.4
